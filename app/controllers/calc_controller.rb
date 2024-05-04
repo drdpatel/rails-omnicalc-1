@@ -20,6 +20,9 @@ class CalcController < ApplicationController
   end
 
   def get_square_root_results
+    @the_num = params.fetch("square_root_with_form").to_f
+    @the_result_1 = params.fetch("square_root_with_form").to_f
+    @the_result = Math.sqrt(@the_result_1)
 
     render({ :template => "path/square_root_results" })
   end
@@ -40,6 +43,11 @@ class CalcController < ApplicationController
   end
 
   def get_random_results
+
+    @the_apr = params.fetch("apr").to_f
+    @the_years = params.fetch("years").to_f
+    @the_principal = params.fetch("principal").to_f
+    @the_result = rand(@the_num_min..@the_num_max)
 
     render({ :template => "path/random_results" })
   end
