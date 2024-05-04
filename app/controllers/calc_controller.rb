@@ -33,6 +33,10 @@ class CalcController < ApplicationController
   end
 
   def get_payment_results
+    @the_apr = params.fetch("apr").to_f
+    @the_years = params.fetch("years").to_f
+    @the_principal = params.fetch("principal").to_f
+    @the_payment = rand(@the_num_min..@the_num_max)
 
     render({ :template => "path/payment_results" })
   end
@@ -44,9 +48,8 @@ class CalcController < ApplicationController
 
   def get_random_results
 
-    @the_apr = params.fetch("apr").to_f
-    @the_years = params.fetch("years").to_f
-    @the_principal = params.fetch("principal").to_f
+    @the_num_min = params.fetch("user_min").to_f
+    @the_num_max = params.fetch("user_max").to_f
     @the_result = rand(@the_num_min..@the_num_max)
 
     render({ :template => "path/random_results" })
